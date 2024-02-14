@@ -1,0 +1,104 @@
+Question #1: Turning Strings to URLs
+
+function URLify(str) {
+  let result = '';
+  for (let i = 0; i < str.length; i++) {
+    str.charAt(i) === " " ? result += "%20" : result += str.charAt(i);
+  }
+  return result; 
+}
+function URLifyRecursive(str, index = 0, result = '') {
+  if (index === str.length) {
+    return result; 
+  }
+  if (str.charAt(index) === " ") {
+    result += "%20";
+  } else {
+    result += str.charAt(index);
+  }
+  return URLifyRecursive(str, index += 1, result); 
+}
+
+Question #2: Array Deduping
+
+function deduping(arr) {
+  let resultObj = new Set(); 
+  for (let element of arr) {
+    resultObj.add(element);
+  }
+  let resultArr = [];
+  resultObj.forEach(item => {
+    resultArr.push(item);
+  });
+
+  return resultArr; 
+}
+function dedupingRecursive(arr, index = 0, result = []) {
+  if (index === arr.length) {
+    return result;
+  }
+  if (!result.includes(arr[index])) {
+    result.push(arr[index]);
+  }
+  return dedupingRecursive(arr, index += 1, result); 
+}
+
+Question #3: Compressing Strings
+
+function strCompressor(str) {
+  let compressed = '';
+  let count = 1; 
+
+  for (let i = 0; i <= str.length; i++) {
+    if (str[i] === str[i + 1]) {
+      count ++;
+    } else {
+      compressed += (count > 1 ? count : '') + str[i];
+      count = 1;
+    }
+  }
+  return compressed;
+}
+function strCompressorRecursive(str, index = 0, compressed = '', count = 1) {
+  if (index === str.length) {
+    return compressed;
+  }
+  if (str[index] === str[index + 1]) {
+    count ++;
+  } else {
+    compressed += (count > 1 ? count : '') + str[index];
+    count = 1; 
+  }
+  return strCompressorRecursive(str, index += 1, compressed, count); 
+}
+
+Question #4: Checking for Uniqueness
+
+function checkUniqueness(str) {
+  for (let i = 0; i < str.length; i++) {
+    /*
+    for (let j = i + 1; j < str.length; j++) {
+      if (str.charAt(i) === str.charAt(j)) {
+        return false; // not unique 
+      } 
+    }
+    */
+    if (str.charAt(i) === str.charAt(i + 1)) {
+      return false; 
+    }
+  }
+  return true; 
+}
+
+Question #5: Array Sorting
+
+function arraySorting(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = 0; j < arr.length - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
+  }
+  return arr;
+}

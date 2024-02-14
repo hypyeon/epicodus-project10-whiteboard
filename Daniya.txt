@@ -1,0 +1,68 @@
+Question #1: Turning Strings to URLs
+
+const stringReplace = (sentence, sign) => {
+  let newSentence = sentence.split(" ");
+
+  for(let i = 1; i < newSentence.length; i+=2){
+    newSentence.splice(i, 0, sign)
+  }
+
+  let newSentencewithSign = newSentence.join("");
+  return newSentencewithSign
+}
+
+Question #2: Array Deduping
+
+function removeDupes(input){
+  let newOutput = [];
+  input.forEach(element => {
+    if(!newOutput.includes(element)){
+      newOutput.push(element)
+    }
+  });
+  return newOutput;
+}
+
+Question #3: Compressing Strings
+
+function compressingString(str){
+  let newCompress= [];
+  let count = 1;
+
+  const newInput= str.split('');
+  newInput.forEach((char, index) =>{
+    if(char === newInput[index + 1]){
+      count++;
+    }else{
+      newCompress.push(count  + char);
+      count = 1;
+    }
+  })
+  const compressesOne = newCompress.join("");
+  return compressesOne;
+}
+
+Question #4: Checking for Uniqueness
+
+function uniqueWord(word){
+  let letters = {};
+  for(let i = 0; i < word.length; i++){
+    let char = word[i];
+    
+    if(letters[char]){
+      return false
+    }
+    letters[char] = true
+  }
+  return true
+}
+
+Question #5: Array Sorting
+
+function numSort(nums){
+  for(let i =0; i < nums.length; i++){
+    for(let j = 0; j < nums.length - 1; j++){
+      
+    }
+  }
+}
